@@ -20,6 +20,34 @@ app.message('ぬるぽ', async ({ message, say }) => {
   await say(`${ga}`);
 });
 
+app.message('hello', async ({ message, say }) => {
+  await say({
+    blocks: [
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": `Hey there <@${message.user}>!`
+        },
+        "accessory": {
+          "type": "button",
+          "text": {
+            "type": "plain_text",
+            "text": "Click Me"
+          },
+          "action_id": "button_click"
+        }
+      }
+    ],
+    text: `Hey there <@${message.user}>!`
+  });
+});
+
+app.action('button_click', async ({ body, ack, say }) => {
+  await ack();
+  await say(`<@${body.user.id}> clicked the button`);
+});
+
 (async () => {
   await app.start(process.env.PORT || 3000);
 

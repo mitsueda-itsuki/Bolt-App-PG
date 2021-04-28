@@ -1,3 +1,3 @@
-# Bolt-Sample-App
+# Bolt-App-PG
 
 Boltで遊んでいます
